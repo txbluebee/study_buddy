@@ -1,0 +1,10 @@
+<h1>Tips</h1>
+<% if @tips.any?() %>
+  <ul>
+    <% @tips.each() do |tip| %>
+      <li><a href="/tips/<%= tip.id()%>"><%= tip.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>No tips added yet.</h4>
+<% end %>
