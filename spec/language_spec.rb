@@ -1,6 +1,18 @@
 require('spec_helper')
 
 describe(Language) do
+  it("validates presence of name") do
+    test_language = Language.new({:name => ""})
+    expect(test_language.save()).to(eq(false))
+  end
+
+  it("validates uniqueness of name") do
+    test_language = Language.new({:name => "Ruby"})
+    test_language.save()
+    test_language2 = Language.new({:name => "Ruby"})
+    expect(test_language2.save()).to(eq(false))
+  end
+
   describe("#name") do
     it("returns the name of the language") do
       test_language = Language.create({:name => "Ruby"})
