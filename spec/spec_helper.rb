@@ -19,6 +19,12 @@ RSpec.configure do |config|
     Flashcard.all().each() do |flascard|
       flascard.destroy()
     end
- 
+    User.all().each() do |user|
+      user.destroy()
+    end
+    Language.all().each() do |language|
+      language.destroy()
+    end
+
   end
 end

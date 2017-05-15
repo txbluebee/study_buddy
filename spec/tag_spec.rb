@@ -9,4 +9,11 @@ describe(Tag) do
     expect(test_tag.flashcards()).to(eq([test_flashcard1, test_flashcard2]))
     end
   end
+  describe("#language") do
+    it("tells tag belongs to language") do
+      test_language = Language.create({:name => "Ruby"})
+      test_tag = Tag.create({:name => "Active Record", :language_id => test_language.id})
+      expect(test_tag.language()).to(eq(test_language))
+    end
+  end
 end
