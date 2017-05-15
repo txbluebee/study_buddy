@@ -13,18 +13,23 @@ require('./app')
 
 RSpec.configure do |config|
   config.after(:each) do
+    User.all().each do |user|
+      user.destroy()
+    end
+    Tip.all().each do |tip|
+      tip.destroy()
+    end
+    Project.all().each do |project|
+      project.destroy()
+    end
+    Language.all().each do |language|
+    language.destroy()
+    end
     Tag.all().each() do |tag|
       tag.destroy()
     end
     Flashcard.all().each() do |flascard|
       flascard.destroy()
     end
-    User.all().each() do |user|
-      user.destroy()
-    end
-    Language.all().each() do |language|
-      language.destroy()
-    end
-
   end
 end

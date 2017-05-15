@@ -1,7 +1,13 @@
 class Language < ActiveRecord::Base
-  has_many(:tags)
-  belongs_to(:user)
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  belongs_to :user
+  has_many :tips
+  has_many :projects
+  has_many :tags
+
+  # validates :name, presence: true
+  # validates :name, uniqueness: true
+
+  validates :name, :presence => true,
+                   :uniqueness => true
 
 end
