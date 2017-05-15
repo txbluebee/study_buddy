@@ -1,0 +1,9 @@
+<h3>Current Tags</h3>
+<%= if @tag.flashcards().any?() %>
+  <ul><%= @tag.flashcards.each() do |flashcard|%>
+    <li><%= flashcard.name() %></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <h5>No tags yet!</h5>
+  <% end %>
