@@ -1,13 +1,15 @@
-<form action="/log_in" method="post">
-  <div class="form-group">
-    <label for="login">User Name</label>
-    <input class="form-control" type="text" name="login">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" type="password" name="password">
-  </div>
-  <div class="btn-group">
-    <button class="btn btn-success" type="submit">Login</button>
-  </div>
-</form>
+<div class="container">
+  <form action="/users/new" class="form-signin" method="post">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <input type="text" id="login" class="form-control" placeholder="User Name" required autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <a href="/"><button class="btn btn-lg btn-warning mt-4 btn-block" type="button">Home</button></a>
+  </form>
+</div> <!-- /container -->

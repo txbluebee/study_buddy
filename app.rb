@@ -5,15 +5,23 @@ require("pry")
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
+####### Home Page ##########
 get('/') do
-  erb(:index)
+  erb(:home)
 end
 
+####### User login ########
 get ('/user_login') do
   erb(:user_login)
 end
 
-post ('/log_in') do
+####### Selete Languages #######
+
+get('/languages') do
+
+end
+
+post ('/users/new') do
   login = params[:login]
   password = params[:password]
   @user = User.create({:login => login, :password => password})
@@ -37,6 +45,7 @@ get('/tags/:id') do
   @tag = Tag.find(tag_id)
   @flashcards = Flashcard.all()
   erb(:tag)
+end
 
 get('/projects/new')do
   erb(:project_form)
@@ -70,5 +79,4 @@ post('/tips/new')do
   description = params.fetch('description')
   @tip = Tip.create({:name => name, :description => description})
   redirect('/tips')
-
 end

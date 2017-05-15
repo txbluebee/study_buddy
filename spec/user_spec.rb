@@ -20,6 +20,9 @@ describe(User) do
       expect(test_user.name).to(eq("Dan"))
     end
   end
+
+
+
   describe('#languages') do
     it("returns the array of languages for the user ") do
       test_user = User.create({:name => "Dan"})
