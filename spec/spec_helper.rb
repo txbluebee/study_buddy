@@ -4,9 +4,21 @@ require("bundler/setup")
 Bundler.require(:default, :test)
 set(:root, Dir.pwd())
 
+Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
+
 require('capybara/rspec')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 require('./app')
 
-Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
+RSpec.configure do |config|
+  config.after(:each) do
+    Tag.all().each() do |tag|
+      tag.destroy()
+    end
+    Flashcard.all().each() do |flascard|
+      flascard.destroy()
+    end
+ 
+  end
+end
