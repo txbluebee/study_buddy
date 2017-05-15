@@ -1,0 +1,1 @@
+class Project < ActiveRecord::Base
