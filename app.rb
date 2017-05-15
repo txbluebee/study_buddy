@@ -2,9 +2,11 @@ require("bundler/setup")
 Bundler.require(:default)
 require("pry")
 
+ENV['RACK_ENV'] = 'development'
+
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-
+#Login
 get('/') do
   erb(:index)
 end
@@ -14,37 +16,43 @@ get ('/user_login') do
 end
 
 post ('/log_in') do
-  login = params[:login]
-  password = params[:password]
-  @user = User.create({:login => login, :password => password})
-  @languages = Language.all()
+  login = params.fetch('login')
+  password = params.fetch('password')
+  @user = User.new({:login => login, :password => password})
+  @user.save()
+  binding.pry
+  @languages = @user.languages()
   erb(:languages)
 end
 
-post ('/add_language') do
+
+
+
+#Language
+post ('/:user_id/add_language/') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.fing(user_id)
   name = params[:name]
-  @language = Language.create({:name => name})
-  @languages = Language.all()
+  @language = @user.languages().create({:name => name})
+  @languages = @user.languages()
   erb(:languages)
 end
 
-get('/languages/:id') do
+get('/user/:user_id/languages/:id') do
   new_language_id = params.fetch('id').to_i()
   @language = Language.find(new_language_id)
   erb(:language)
 end
-get ('/tags') do
-  @tags = Tag.all()
+
+
+#Tag group
+get ('/users/:user_id/languages/:language_id/tags') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
+  @tags = @language.tags()
   erb (:tags)
-end
-
-get('/projects/new') do
-  erb(:project_form)
-end
-
-get('/projects') do
-  @projects = Project.all()
-  erb(:projects)
 end
 
 post ('/add_tag') do
@@ -61,6 +69,16 @@ get('/tags/:id') do
   erb(:tag)
 end
 
+#Project group
+get('/projects/new') do
+  erb(:project_form)
+end
+
+get('/projects') do
+  @projects = Project.all()
+  erb(:projects)
+end
+
 post('/projects/new') do
   name = params.fetch('name')
   date = params.fetch('date')
@@ -70,6 +88,7 @@ post('/projects/new') do
   redirect('/projects')
 end
 
+#Tips
 get('/tips/new') do
   erb(:tip_form)
 end

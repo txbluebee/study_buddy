@@ -4,13 +4,14 @@
     <% if @languages.any?() %>
       <ul>
         <% @languages.each() do |language| %>
-          <li><a href="/languages/<%= language.id()%>"><%= language.name() %></a></li>
+          <li><a href="/user/<%= @user.id()%>/languages/<%= language.id()%>"><%= language.name() %></a></li>
         <% end %>
       </ul>
       <% end %>
   </div>
   <div class="col-md-6">
-    <form action="/add_language" method="post">
+    <form action="/<%= @user.id() %>add_language" method="post">
+
       <div class="form-group">
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name">
