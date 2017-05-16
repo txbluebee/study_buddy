@@ -33,16 +33,17 @@ end
 
 #User Login
 post ('/users/login') do
-  user_name = params.fetch('login_name')
+  @user_input_name = params.fetch('login_name')
   @password = params.fetch('password')
-  @user = User.find_by(login: user_name)
-  if @user.password() == @password
+  @user = User.find_by(login: @user_input_name)
+  if @user_input_name && @user == nil
+    erb(:user_login)
+  elsif @user.password() == @password
     redirect('/users/'.concat((@user.id).to_s) + '/languages')
   else
     erb(:user_login)
   end
 end
-
 
 get('/users/:user_id/languages') do
   @user = User.find(params.fetch('user_id').to_i)

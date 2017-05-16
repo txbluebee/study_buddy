@@ -36,7 +36,10 @@
     </ul>
   <% end %>
 
-  <% if (@password != nil) && (@user.password != nil) && (@user.password() != @password) %>
+  <!-- Incorret Password -->
+  <% if @user_input_name && @user == nil %>
+    <h3>The username you’ve entered doesn’t match any account.</h3>
+  <% elsif (@password != nil) && (@user.password != nil) && (@user.password() != @password) %>
     <h3>Wrong Password!</h3>
   <% end  %>
 </div> <!-- /container -->
