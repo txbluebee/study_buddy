@@ -36,10 +36,9 @@ post ('/users/login') do
   user_name = params.fetch('login_name')
   @password = params.fetch('password')
   @user = User.find_by(login: user_name)
-  if @user.password() == password
+  if @user.password() == @password
     redirect('/users/'.concat((@user.id).to_s) + '/languages')
   else
-    @user = User.find_by(login: user_name)
     erb(:user_login)
   end
 end
