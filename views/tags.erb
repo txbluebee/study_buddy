@@ -6,13 +6,13 @@
       <h2>Available tags</h2>
         <ul>
           <%@tags.each() do |tag|%>
-            <li><a href="/tags/<%= tag.id() %>"><%= tag.name() %></a></li>
+            <li><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= tag.id() %>"><%= tag.name() %></a></li>
           <% end %>
         </ul>
     <% end %>
   </div>
   <div class="col-md-6">
-    <form action="/add_tag" method="post">
+    <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/add_tag" method="post">
       <div class="form-group">
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name">

@@ -1,10 +1,26 @@
 <div class="container">
+<h3>Current Tag <%= @tag.name() %></h3>
 <h1>Flashcards</h1>
-<a href="/flashcards">Flashcards</a>
 <br>
-<div id="red">ttt</div>
-<a href="/flashcards/new">Add A New Flashcard</a>
+<a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new">Add A New Flashcard</a>
 <br><br>
+<form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new" method="post">
+  <div class="form-group">
+    <label for="question">Question: </label>
+    <input id="question" name="question" type="text"  class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="answer">Answer: </label>
+    <input id="answer" name="answer" type="text"  class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<br>
+<!-- Study button -->
+<button type="button" class="btn bbtn-success" name="button"><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/<%= @flashcards.first().id() %>">Study</a></button>
+
 <% if @flashcards.any?() %>
     <div class="row">
     <% @flashcards.each() do |flashcard| %>

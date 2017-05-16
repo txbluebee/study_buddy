@@ -1,0 +1,20 @@
+<div class="stage">
+  <div id = "<%= @flashcard.id() %>" class="flashcard">
+    <div class="front">
+      <p><%= @flashcard.question() %></p>
+    </div>
+    <div class="back">
+      <p><%= @flashcard.answer() %></p>
+    </div>
+  </div>
+  </div>
+<br>
+
+<form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/<%= @flashcard.id() %>/next_flashcard" method="post">
+   <input name="_method" type="hidden" value="patch">
+   <input id="flashcard_id" name="question_id" type="hidden" value="<%= @flashcard.id() %>">
+
+<div class="btn-group">
+  <button class="btn btn-success" type="submit">Next Question</button>
+</div>
+</form>

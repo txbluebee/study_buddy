@@ -80,39 +80,6 @@ get('/users/:user_id/languages/:language_id') do
   erb(:dashboard)
 end
 
-#Flashcard group
-#flashcards home page
-get('/flashcards') do
-  @flashcards = Flashcard.all()
-  erb(:flashcards)
-end
-
-
-# get('/users/:user_id/languages/:language_id/flashcards') do
-#   user_id = params.fetch('user_id').to_i
-#   @user = User.find(user_id)
-#   language_id = params.fetch('language_id').to_i
-#   @language = Language.find(language_id)
-#   @flashcards = @language.flashcards()
-#   erb(:flashcards)
-# end
-#add a new flashcard
-
-get('/flashcards/new') do
-  erb(:flashcard_form)
-end
-
-post('/flashcards/new') do
-  question = params.fetch('question')
-  answer = params.fetch('answer')
-  @flashcard = Flashcard.create({:question => question, :answer => answer})
-  redirect('/flashcards')
-end
-
-
-
-
-
 #Tag group
 get ('/users/:user_id/languages/:language_id/tags') do
   user_id = params.fetch('user_id').to_i
@@ -123,18 +90,80 @@ get ('/users/:user_id/languages/:language_id/tags') do
   erb (:tags)
 end
 
-post ('/add_tag') do
+post ('/users/:user_id/languages/:language_id/add_tag') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
   name = params[:name]
-  new_tag = Tag.create({:name => name})
-  @tags = Tag.all()
-  erb(:tags)
+  new_tag = Tag.create({:name => name, :language_id => language_id})
+
+  @tags = @language.tags()
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tags')
 end
 
-get('/tags/:id') do
+get('/users/:user_id/languages/:language_id/tags/:id') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
   tag_id = params.fetch('id').to_i()
   @tag = Tag.find(tag_id)
-  @flashcards = Flashcard.all()
-  erb(:tag)
+  @flashcards = @tag.flashcards()
+  erb(:flashcards)
+end
+
+
+#Flashcard group
+#flashcards home page
+
+get('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
+  tag_id = params.fetch('tag_id').to_i
+  @tag = Tag.find(tag_id)
+  @flashcards = @tag.flashcards()
+  erb(:flashcards)
+end
+
+get('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @tag = Tag.find(params.fetch("tag_id").to_i())
+  erb(:flashcard_form)
+end
+
+post('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/new') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
+  tag_id = params.fetch('tag_id').to_i
+  @tag = Tag.find(tag_id)
+  question = params.fetch('question')
+  answer = params.fetch('answer')
+  @flashcard = Flashcard.create({:question => question, :answer => answer, :tag_id => tag_id})
+  @flashcards = @tag.flashcards()
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tags/'.concat((@tag.id).to_s)+'/flashcards')
+end
+
+get('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/:flashcard_id') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @tag = Tag.find(params.fetch("tag_id").to_i())
+  @flashcard = Flashcard.find(params.fetch("flashcard_id").to_i())
+  erb(:flashcard)
+end
+
+patch('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/:flashcard_id/next_flashcard') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @tag = Tag.find(params.fetch("tag_id").to_i())
+  @flashcard = Flashcard.find(params.fetch("flashcard_id").to_i())
+
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tags/'.concat((@tag.id).to_s)+'/flashcards/'.concat((@flashcard.next().id().to_s)))
 end
 
 #Project group
