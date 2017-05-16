@@ -169,7 +169,6 @@ body {
   }
 }
 
-
 #flashcard_design {
 
   border-style: solid;
@@ -178,6 +177,11 @@ body {
   margin: 7px;
   height: 70px;
   padding: 5px;
+}
 
+/* User Login Form*/
+
+#user_sign_up, #success_signup{
+  display: none;
 }
  

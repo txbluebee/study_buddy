@@ -9,7 +9,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 ####### Home Page ##########
 
 get('/') do
-  erb(:home)
+  erb(:index)
 end
 
 ####### User login ########
@@ -17,18 +17,32 @@ get ('/user_login') do
   erb(:user_login)
 end
 
-get('/dashboard') do
-  erb(:index)
-end
-####### Selete Languages #######
-
-#teamone
+#User Sign Up
 post ('/users/new') do
-  name = params.fetch('name')
+  sign_up_name = params.fetch('sign_up_name')
+  user_name = params.fetch('user_name')
   password = params.fetch('password')
-  new_user = User.create({:name => name, :password => password})
-  redirect('/users/'.concat((new_user.id).to_s) + '/languages')
+  @new_user = User.new({:name => sign_up_name, :password => password, :login => user_name })
+  if @new_user.save()
+    redirect('/')
+  else
+    @errors = @new_user
+    erb(:user_login)
+  end
 end
+
+#User Login
+post ('/users/login') do
+  user_name = params.fetch('login_name')
+  @password = params.fetch('password')
+  @user = User.find_by(login: user_name)
+  if @user.password() == @password
+    redirect('/users/'.concat((@user.id).to_s) + '/languages')
+  else
+    erb(:user_login)
+  end
+end
+
 
 get('/users/:user_id/languages') do
   @user = User.find(params.fetch('user_id').to_i)
@@ -63,7 +77,7 @@ get('/users/:user_id/languages/:language_id') do
   @user = User.find(user_id)
   language_id = params.fetch('language_id').to_i
   @language = Language.find(language_id)
-  erb(:index)
+  erb(:dashboard)
 end
 
 #Flashcard group
@@ -143,19 +157,24 @@ post('/projects/new') do
 end
 
 #Tips
-get('/tips/new') do
+get('/users/:user_id/languages/:language_id/tips/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
   erb(:tip_form)
 end
 
-get('/tips') do
+get('/users/:user_id/languages/:language_id/tips') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
   @tips = Tip.all()
   erb(:tips)
 end
 
-post('/tips/new') do
-  name = params.fetch('name')
-  description = params.fetch('description')
-  @tip = Tip.create({:name => name, :description => description})
-  redirect('/tips')
-
+post('/users/:user_id/languages/:language_id/tips/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  tip_name = params.fetch('name')
+  tip_description = params.fetch('description')
+  @tip = Tip.create({:name => tip_name, :description => tip_description})
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end
