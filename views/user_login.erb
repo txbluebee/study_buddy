@@ -1,7 +1,7 @@
 <div class="container">
-  <form action="/users/new" class="form-signin" method="post">
+  <form action="/users/login" class="form-signin" method="get">
     <h2 class="form-signin-heading">Please sign in</h2>
-    <input type="text" id="name" name="name" class="form-control" placeholder="User Name" required autofocus>
+    <input type="text" id="login_name" name="login_name" class="form-control" placeholder="User Name" required autofocus>
     <label for="password" class="sr-only">Password</label>
     <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
     <div class="checkbox">
@@ -12,5 +12,27 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
   <a href="/"><button class="btn btn-lg btn-warning mt-4 btn-block" type="button">Home</button></a>
-  <a href="/dashboard"><button class="btn btn-lg btn-success mt-4 btn-block" type="button">Dashboard</button></a>
+  <button class="btn btn-lg btn-success mt-4 btn-block signup-btn" type="button">Not a user yet? Sign up today</button>
+
+  <div id="user_sign_up">
+    <form action="/users/new" class="form-signin" method="post">
+      <h2 class="form-signin-heading">Sign Up for Study Buddy</h2>
+      <input type="text" id="sign_up_name" name="sign_up_name" class="form-control" placeholder="Enter your name" required autofocus>
+      <input type="text" id="user_name" name="user_name" class="form-control" placeholder="Create User Name" required autofocus>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block success-signup" type="submit">Sign up</button>
+    </form>
+
+  </div>
+
+  <!-- Error Messages -->
+  <% if (@new_user != nil ) && (@new_user.errors().any?()) %>
+    <h3>Error: </h3>
+    <ul>
+    <% @new_user.errors().full_messages().each() do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
 </div> <!-- /container -->

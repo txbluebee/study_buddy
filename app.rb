@@ -17,18 +17,27 @@ get ('/user_login') do
   erb(:user_login)
 end
 
-get('/dashboard') do
-  erb(:index)
-end
-####### Selete Languages #######
-
-#teamone
+#User Sign Up
 post ('/users/new') do
-  name = params.fetch('name')
+  sign_up_name = params.fetch('sign_up_name')
+  user_name = params.fetch('user_name')
   password = params.fetch('password')
-  new_user = User.create({:name => name, :password => password})
-  redirect('/users/'.concat((new_user.id).to_s) + '/languages')
+  @new_user = User.new({:name => sign_up_name, :password => password, :login => user_name })
+  if @new_user.save()
+    redirect('/')
+  else
+    erb(:user_login)
+  end
 end
+
+#User Login
+get ('/users/login') do
+  user_name = params.fetch('login_name')
+  password = params.fetch('password')
+  @user = User.find_by(login: user_name, password: password)
+  redirect('/users/'.concat((@user.id).to_s) + '/languages')
+end
+
 
 get('/users/:user_id/languages') do
   @user = User.find(params.fetch('user_id').to_i)
