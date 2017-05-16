@@ -9,7 +9,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 ####### Home Page ##########
 
 get('/') do
-  erb(:home)
+  erb(:index)
 end
 
 ####### User login ########
@@ -77,7 +77,7 @@ get('/users/:user_id/languages/:language_id') do
   @user = User.find(user_id)
   language_id = params.fetch('language_id').to_i
   @language = Language.find(language_id)
-  erb(:index)
+  erb(:dashboard)
 end
 
 #Flashcard group
