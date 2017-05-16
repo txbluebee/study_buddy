@@ -2,10 +2,13 @@ require("bundler/setup")
 Bundler.require(:default)
 require("pry")
 
+ENV['RACK_ENV'] = 'development'
+
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-
+<<<<<<< HEAD
 ####### Home Page ##########
+
 get('/') do
   erb(:home)
 end
@@ -15,13 +18,14 @@ get ('/user_login') do
   erb(:user_login)
 end
 
+
 get('/dashboard') do
   erb(:index)
 end
 
 ####### Selete Languages #######
 
-
+#teamone
 post ('/users/new') do
   login = params[:login]
   password = params[:password]
@@ -29,8 +33,44 @@ post ('/users/new') do
   erb(:user_dashboard)
 end
 
-get ('/tags') do
-  @tags = Tag.all()
+#teamtwo login
+post ('/log_in') do
+  login = params.fetch('login')
+  password = params.fetch('password')
+  @user = User.new({:login => login, :password => password})
+  @user.save()
+  binding.pry
+  @languages = @user.languages()
+  erb(:languages)
+end
+
+
+
+
+#Language
+post ('/:user_id/add_language/') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.fing(user_id)
+  name = params[:name]
+  @language = @user.languages().create({:name => name})
+  @languages = @user.languages()
+  erb(:languages)
+end
+
+get('/user/:user_id/languages/:id') do
+  new_language_id = params.fetch('id').to_i()
+  @language = Language.find(new_language_id)
+  erb(:language)
+end
+
+
+#Tag group
+get ('/users/:user_id/languages/:language_id/tags') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
+  @tags = @language.tags()
   erb (:tags)
 end
 
@@ -48,11 +88,12 @@ get('/tags/:id') do
   erb(:tag)
 end
 
-get('/projects/new')do
+#Project group
+get('/projects/new') do
   erb(:project_form)
 end
 
-get('/projects')do
+get('/projects') do
   @projects = Project.all()
   erb(:projects)
 end
@@ -66,6 +107,7 @@ post('/projects/new') do
   redirect('/projects')
 end
 
+#Tips
 get('/tips/new') do
   erb(:tip_form)
 end
@@ -75,9 +117,10 @@ get('/tips') do
   erb(:tips)
 end
 
-post('/tips/new')do
+post('/tips/new') do
   name = params.fetch('name')
   description = params.fetch('description')
   @tip = Tip.create({:name => name, :description => description})
   redirect('/tips')
+
 end
