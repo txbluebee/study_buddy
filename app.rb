@@ -32,7 +32,7 @@ post ('/users/new') do
 end
 
 #User Login
-post ('/users/login') do
+post ('/users_login') do
   @user_input_name = params.fetch('login_name')
   @password = params.fetch('password')
   @user = User.find_by(login: @user_input_name)

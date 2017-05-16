@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/users/login" class="form-signin" method="post">
+  <form action="/users_login" class="form-signin" method="post">
     <h2 class="form-signin-heading">Please sign in</h2>
     <input type="text" id="login_name" name="login_name" class="form-control" placeholder="User Name" required autofocus>
     <label for="password" class="sr-only">Password</label>
@@ -9,10 +9,18 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
+    <!-- Incorret Password -->
+    <% if @user_input_name && @user == nil %>
+      <h3>The username you’ve entered doesn’t match any account.</h3>
+    <% elsif (@password != nil) && (@user.password != nil) && (@user.password() != @password) %>
+      <h3>Wrong Password!</h3>
+    <% end  %>
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
   <a href="/"><button class="btn btn-lg btn-warning mt-4 btn-block" type="button">Home</button></a>
   <button class="btn btn-lg btn-success mt-4 btn-block signup-btn" type="button">Not a user yet? Sign up today</button>
+
 
   <div id="user_sign_up">
     <form action="/users/new" class="form-signin" method="post">
@@ -36,10 +44,4 @@
     </ul>
   <% end %>
 
-  <!-- Incorret Password -->
-  <% if @user_input_name && @user == nil %>
-    <h3>The username you’ve entered doesn’t match any account.</h3>
-  <% elsif (@password != nil) && (@user.password != nil) && (@user.password() != @password) %>
-    <h3>Wrong Password!</h3>
-  <% end  %>
 </div> <!-- /container -->
