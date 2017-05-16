@@ -26,16 +26,22 @@ post ('/users/new') do
   if @new_user.save()
     redirect('/')
   else
+    @errors = @new_user
     erb(:user_login)
   end
 end
 
 #User Login
-get ('/users/login') do
+post ('/users/login') do
   user_name = params.fetch('login_name')
-  password = params.fetch('password')
-  @user = User.find_by(login: user_name, password: password)
-  redirect('/users/'.concat((@user.id).to_s) + '/languages')
+  @password = params.fetch('password')
+  @user = User.find_by(login: user_name)
+  if @user.password() == password
+    redirect('/users/'.concat((@user.id).to_s) + '/languages')
+  else
+    @user = User.find_by(login: user_name)
+    erb(:user_login)
+  end
 end
 
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/users/login" class="form-signin" method="get">
+  <form action="/users/login" class="form-signin" method="post">
     <h2 class="form-signin-heading">Please sign in</h2>
     <input type="text" id="login_name" name="login_name" class="form-control" placeholder="User Name" required autofocus>
     <label for="password" class="sr-only">Password</label>
@@ -27,12 +27,16 @@
   </div>
 
   <!-- Error Messages -->
-  <% if (@new_user != nil ) && (@new_user.errors().any?()) %>
+  <% if (@errors != nil ) && (@errors.errors().any?()) %>
     <h3>Error: </h3>
     <ul>
-    <% @new_user.errors().full_messages().each() do |message| %>
+    <% @errors.errors().full_messages().each() do |message| %>
       <li><%= message %></li>
     <% end %>
     </ul>
   <% end %>
+
+  <% if @user.password() != @password%>
+    <h3>Wrong Password!</h3>
+  <% end  %>
 </div> <!-- /container -->
