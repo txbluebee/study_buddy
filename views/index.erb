@@ -1,13 +1,21 @@
-<a href="/projects">Projects</a>
-<br>
-<a href="/projects/new">Add new project</a>
-<br>
-<a href="/tips">Tips</a>
-<br>
-<a href="/tips/new">Add new tip</a>
-<br>
-<a href="/tags">Tags</a>
-<br>
-<a href="/flashcards">Flashcards</a>
-<br>
-<a href="/flashcards/new">Add A New Flashcard</a>
+<div class="container">
+  <div class="jumbotron">
+    <h5>Hello <%=@user.name() %></h5>
+    <h1 class="text-center"><%=@language.name %></h1>
+  </div>
+
+
+  <a href="/projects">Projects</a>
+  <br>
+  <a href="/projects/new">Add new project</a>
+  <br>
+  <a href="/tips">Tips</a>
+  <br>
+  <a href="/tips/new">Add new tip</a>
+  <br>
+  <a href="/tags">Tags</a>
+  <br>
+  <a href="/flashcards">Flashcards</a>
+  <br>
+  <a href="/flashcards/new">Add A New Flashcard</a>
+</div>

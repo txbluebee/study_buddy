@@ -2,7 +2,7 @@ require("bundler/setup")
 Bundler.require(:default)
 require("pry")
 
-ENV['RACK_ENV'] = 'development'
+ENV['RACK_ENV'] = 'test'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
@@ -17,49 +17,53 @@ get ('/user_login') do
   erb(:user_login)
 end
 
-
 get('/dashboard') do
   erb(:index)
 end
-
 ####### Selete Languages #######
 
 #teamone
 post ('/users/new') do
-  login = params[:login]
-  password = params[:password]
-  @user = User.create({:login => login, :password => password})
-  erb(:user_dashboard)
-end
-
-#teamtwo login
-post ('/log_in') do
-  login = params.fetch('login')
+  name = params.fetch('name')
   password = params.fetch('password')
-  @user = User.new({:login => login, :password => password})
-  @user.save()
-  binding.pry
-  @languages = @user.languages()
+  new_user = User.create({:name => name, :password => password})
+  redirect('/users/'.concat((new_user.id).to_s) + '/languages')
+end
+
+get('/users/:user_id/languages') do
+  @user = User.find(params.fetch('user_id').to_i)
+  @languages = @user.languages
   erb(:languages)
 end
 
 
-
-
-#Language
-post ('/:user_id/add_language/') do
+# Add New Language
+post ("/users/:user_id/languages/new") do
   user_id = params.fetch('user_id').to_i
-  @user = User.fing(user_id)
-  name = params[:name]
-  @language = @user.languages().create({:name => name})
+  @user = User.find(user_id)
+  name = params.fetch('name')
+  @language = Language.create({:name => name, :user_id => user_id})
   @languages = @user.languages()
   erb(:languages)
 end
 
-get('/user/:user_id/languages/:id') do
-  new_language_id = params.fetch('id').to_i()
-  @language = Language.find(new_language_id)
-  erb(:language)
+
+#User select language to study
+
+post ('/users/:user_id/languages/') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  redirect('/users/'.concat((user_id).to_s) + '/languages/'.concat((language_id).to_s))
+end
+
+#dashboard
+get('/users/:user_id/languages/:language_id') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
+  erb(:index)
 end
 
 #Flashcard group
