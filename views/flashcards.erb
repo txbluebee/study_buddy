@@ -7,19 +7,21 @@
 <% if @flashcards.any?() %>
     <div class="row">
     <% @flashcards.each() do |flashcard| %>
-      <div class="col-xs-6 col-md-4" id="flashcard_design"><a href="/flashcards/<%= flashcard.id()%>"><%= flashcard.question() %></a></div>
-    <% end %>
-  </ul>
-<% else %>
+      <!-- <div class="col-xs-6 col-md-4" id="flashcard_design"> -->
+
+          <div id="card">
+            <div class="front">
+              <p><%= flashcard.question() %> <spand id="flashcard-id"><% flashcard.id() %></span></p>
+            </div>
+            <div class="back">
+              <p><%= flashcard.answer() %></p>
+            </div>
+          </div>
+          <% end %>
+       </div>
+   <% else %>
   <h4>No flashcards added yet.</h4>
 <% end %>
-
-  <!-- <div class="row">
-    <div class="col-xs-6 col-md-4">card</div>
-    <div class="col-xs-6 col-md-4">card</div>
-    <div class="col-xs-6 col-md-4">card</div>
-  </div> -->
-
 
 
 </div>
