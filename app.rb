@@ -15,11 +15,12 @@ get ('/user_login') do
   erb(:user_login)
 end
 
+get('/dashboard') do
+  erb(:index)
+end
+
 ####### Selete Languages #######
 
-get('/languages') do
-
-end
 
 post ('/users/new') do
   login = params[:login]
