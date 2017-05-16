@@ -2,20 +2,22 @@
 <h1>Flashcards</h1>
 <a href="/flashcards">Flashcards</a>
 <br>
+<div id="red">ttt</div>
 <a href="/flashcards/new">Add A New Flashcard</a>
 <br><br>
 <% if @flashcards.any?() %>
     <div class="row">
     <% @flashcards.each() do |flashcard| %>
       <!-- <div class="col-xs-6 col-md-4" id="flashcard_design"> -->
-
-          <div id="card">
+        <div class="stage">
+          <div id = "<%= flashcard.id() %>" class="flashcard">
             <div class="front">
-              <p><%= flashcard.question() %> <spand id="flashcard-id"><% flashcard.id() %></span></p>
+              <p><%= flashcard.question() %></p>
             </div>
             <div class="back">
               <p><%= flashcard.answer() %></p>
             </div>
+          </div>
           </div>
           <% end %>
        </div>
