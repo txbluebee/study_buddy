@@ -167,7 +167,7 @@ end
 get('/users/:user_id/languages/:language_id/tips') do
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
-  @tips = Tip.all()
+  @tips = @language.tips.all()
   erb(:tips)
 end
 
@@ -176,6 +176,6 @@ post('/users/:user_id/languages/:language_id/tips/new') do
   @language = Language.find(params.fetch("language_id").to_i())
   tip_name = params.fetch('name')
   tip_description = params.fetch('description')
-  @tip = Tip.create({:name => tip_name, :description => tip_description})
+  @tip = Tip.create({:name => tip_name, :description => tip_description, :language_id => @language.id()})
   redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end
