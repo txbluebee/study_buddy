@@ -6,7 +6,6 @@ ENV['RACK_ENV'] = 'development'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-<<<<<<< HEAD
 ####### Home Page ##########
 
 get('/') do
@@ -62,6 +61,38 @@ get('/user/:user_id/languages/:id') do
   @language = Language.find(new_language_id)
   erb(:language)
 end
+
+#Flashcard group
+#flashcards home page
+get('/flashcards') do
+  @flashcards = Flashcard.all()
+  erb(:flashcards)
+end
+
+
+# get('/users/:user_id/languages/:language_id/flashcards') do
+#   user_id = params.fetch('user_id').to_i
+#   @user = User.find(user_id)
+#   language_id = params.fetch('language_id').to_i
+#   @language = Language.find(language_id)
+#   @flashcards = @language.flashcards()
+#   erb(:flashcards)
+# end
+#add a new flashcard
+
+get('/flashcards/new') do
+  erb(:flashcard_form)
+end
+
+post('/flashcards/new') do
+  question = params.fetch('question')
+  answer = params.fetch('answer')
+  @flashcard = Flashcard.create({:question => question, :answer => answer})
+  redirect('/flashcards')
+end
+
+
+
 
 
 #Tag group

@@ -1,0 +1,25 @@
+<div class="container">
+<h1>Flashcards</h1>
+<a href="/flashcards">Flashcards</a>
+<br>
+<a href="/flashcards/new">Add A New Flashcard</a>
+<br><br>
+<% if @flashcards.any?() %>
+    <div class="row">
+    <% @flashcards.each() do |flashcard| %>
+      <div class="col-xs-6 col-md-4" id="flashcard_design"><a href="/flashcards/<%= flashcard.id()%>"><%= flashcard.question() %></a></div>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>No flashcards added yet.</h4>
+<% end %>
+
+  <!-- <div class="row">
+    <div class="col-xs-6 col-md-4">card</div>
+    <div class="col-xs-6 col-md-4">card</div>
+    <div class="col-xs-6 col-md-4">card</div>
+  </div> -->
+
+
+
+</div>

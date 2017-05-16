@@ -168,3 +168,15 @@ body {
     width: 42rem;
   }
 }
+
+
+#flashcard_design {
+
+  border-style: solid;
+  border-width: medium;
+  border-color: white;
+  margin: 7px;
+  height: 70px;
+  padding: 5px;
+
+}
