@@ -2,11 +2,11 @@ require("bundler/setup")
 Bundler.require(:default)
 require("pry")
 
-ENV['RACK_ENV'] = 'development'
+ENV['RACK_ENV'] = 'test'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-<<<<<<< HEAD
+
 ####### Home Page ##########
 
 get('/') do
@@ -18,29 +18,22 @@ get ('/user_login') do
   erb(:user_login)
 end
 
-
 get('/dashboard') do
   erb(:index)
 end
-
 ####### Selete Languages #######
 
 #teamone
 post ('/users/new') do
-  login = params[:login]
-  password = params[:password]
-  @user = User.create({:login => login, :password => password})
-  erb(:user_dashboard)
+  name = params.fetch('name')
+  password = params.fetch('password')
+  new_user = User.create({:name => name, :password => password})
+  redirect('/users/'.concat((new_user.id).to_s) + '/languages')
 end
 
-#teamtwo login
-post ('/log_in') do
-  login = params.fetch('login')
-  password = params.fetch('password')
-  @user = User.new({:login => login, :password => password})
-  @user.save()
-  binding.pry
-  @languages = @user.languages()
+get('/users/:user_id/languages') do
+  @user = User.find(params.fetch('user_id').to_i)
+  @languages = @user.languages
   erb(:languages)
 end
 
