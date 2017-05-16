@@ -1,5 +1,5 @@
 <h1>Tips</h1>
-<form action="/tips/new" method="post">
+<form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new" method="post">
   <div class="form-group">
     <label for="name">Name: </label>
     <input id="name" name="name" type="text"  class="form-control">

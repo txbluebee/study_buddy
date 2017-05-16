@@ -157,19 +157,24 @@ post('/projects/new') do
 end
 
 #Tips
-get('/tips/new') do
+get('/users/:user_id/languages/:language_id/tips/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
   erb(:tip_form)
 end
 
-get('/tips') do
+get('/users/:user_id/languages/:language_id/tips') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
   @tips = Tip.all()
   erb(:tips)
 end
 
-post('/tips/new') do
-  name = params.fetch('name')
-  description = params.fetch('description')
-  @tip = Tip.create({:name => name, :description => description})
-  redirect('/tips')
-
+post('/users/:user_id/languages/:language_id/tips/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  tip_name = params.fetch('name')
+  tip_description = params.fetch('description')
+  @tip = Tip.create({:name => tip_name, :description => tip_description})
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end

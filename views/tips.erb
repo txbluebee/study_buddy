@@ -1,10 +1,25 @@
-<h1>Tips</h1>
-<% if @tips.any?() %>
-  <ul>
+
+<div class="container">
+  <div class="jumbotron">
+    <h5>Hello <%=@user.name() %></h5>
+    <h1 class="text-center"><%=@language.name %></h1>
+  </div>
+  <h1>Tips</h1>
+  <% if @tips.any?() %>
     <% @tips.each() do |tip| %>
-      <li><a href="/tips/<%= tip.id()%>"><%= tip.name() %></a></li>
+    <div class="list-group">
+      <a class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= tip.name%></h5>
+          <small><%= @language.name() %></small>
+        </div>
+        <p class="mb-1"><%= tip.description%></p>
+      </a>
+    </div>
     <% end %>
-  </ul>
-<% else %>
-  <h4>No tips added yet.</h4>
-<% end %>
+
+  <% else %>
+    <h4>No tips added yet.</h4>
+  <% end %>
+  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new">Add new tip</a>
+</div>
