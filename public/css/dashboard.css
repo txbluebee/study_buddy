@@ -22,3 +22,19 @@
 #cover-caption p{
   font-size: 35px;
 }
+
+.projects_button {
+  width: 300px;
+  height: 200px;
+  background-color: #FF6666;
+  border: 2px;
+  border-radius: 5px;
+  font-size: 40px;
+  font-family: helvetica;
+  vertical-align: middle;
+  line-height: 200px;
+}
+
+ .dashboard_button a:hover {
+  text-decoration: none;
+}
