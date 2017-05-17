@@ -162,8 +162,25 @@ patch('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/:flashcard
   @language = Language.find(params.fetch("language_id").to_i())
   @tag = Tag.find(params.fetch("tag_id").to_i())
   @flashcard = Flashcard.find(params.fetch("flashcard_id").to_i())
+  @flashcards = @tag.flashcards()
 
-  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tags/'.concat((@tag.id).to_s)+'/flashcards/'.concat((@flashcard.next().id().to_s)))
+  if @flashcard.next() != nil
+    redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tags/'.concat((@tag.id).to_s)+'/flashcards/'.concat((@flashcard.next().id().to_s)))
+  else
+    erb(:flashcards)
+  end
+end
+
+#delete a flashcard
+delete('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/:flashcard_id/delete') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @tag = Tag.find(params.fetch("tag_id").to_i())
+  @flashcard = Flashcard.find(params.fetch("flashcard_id").to_i())
+  @flashcards = @tag.flashcards()
+  @flashcard.delete()
+
+  erb(:flashcards)
 end
 
 #Project group
