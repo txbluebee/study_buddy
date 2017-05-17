@@ -1,9 +1,10 @@
 <div class="container">
+  <h3></h3>
 <h3>Current Tag <%= @tag.name() %></h3>
 <h1>Flashcards</h1>
 <br>
-<a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new">Add A New Flashcard</a>
-<br><br>
+<!-- <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new">Add A New Flashcard</a>
+<br><br> -->
 <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new" method="post">
   <div class="form-group">
     <label for="question">Question: </label>
@@ -21,7 +22,7 @@
 <!-- Study button -->
 
 <% if @flashcards.any?() %>
-<button type="button" class="btn bbtn-success" name="button"><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/<%= @flashcards.first().id() %>">Study</a></button>
+<a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/<%= @flashcards.first().id() %>"><button type="button" class="btn btn-success" name="button">Study</button></a>
 <% end %>
 
 <% if @flashcards.any?() %>

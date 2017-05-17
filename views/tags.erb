@@ -6,7 +6,7 @@
       <h2>Available tags</h2>
         <ul>
           <%@tags.each() do |tag|%>
-            <li><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= tag.id() %>"><%= tag.name() %></a></li>
+            <p><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= tag.id() %>"><%= tag.name() %></a></p>
           <% end %>
         </ul>
     <% end %>

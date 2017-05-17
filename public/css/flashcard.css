@@ -1,11 +1,13 @@
+/*body {
 
+}*/
 
 .stage {
  -webkit-perspective: 1000;                   /* Sets up your viewpoint for seeing the animation */
  display:inline-block;
    float:none;
    /* reset the text-align */
-   text-align:left;
+   /*text-align:left;*/
    /* inline-block space fix */
    /*margin-left: 4.5%;*/
 
@@ -13,14 +15,17 @@
 }
 
 .flashcard {
-  height: 600px;
-  width: 800px;
+  height: 50rem;
+  width: 70rem;
   margin: 10% auto;                                              /* Centers the flashcard on the page */
-  border: 1px solid gray;                            /*  Border makes the animation easier to see. */
+  /*border: 10px solid gray;                            /*  Border makes the animation easier to see. */*/
   box-shadow: 2px 2px 2px #000;
   -webkit-transform-style: preserve-3d;                                 /* Provides 3D perspective. */
   transition: all 0.3s;                                /* Slows down any transitions (e.g. rotation) */
   -webkit-transition: all 0.3s;
+  text-align: center;
+
+
 }
 
 .flipped, .back {
@@ -31,17 +36,24 @@
 .front, .back {
   display:inline-block;
   position: absolute;
+  left: 0;
   -webkit-backface-visibility: hidden;           /*  Hides back side of text (it's upside down) */
-  height: 500px;                                   /* Stretches side to inhabit full size of flashcard */
-  width: 500px;
+  height: 50rem;                                   /* Stretches side to inhabit full size of flashcard */
+  width: 70rem;
   text-align: center;
   margin: auto;
-  padding: 10px;
+  padding: 50px;
+  color: black;
+  background-color: white;
+
+}
+
+.front p, .back p {
+  font-size: 30px;
 }
 
 
 .front_preview,  {
-
 
 }
 
@@ -63,11 +75,11 @@
 .stage_preview {
 
 }
-.front p, .back p {
 
-  font-size: 1.25em;
+
+.flashcard_text {
+
 }
-
 .row-centered {
   text-align: center;
 }
@@ -75,7 +87,6 @@
 .limit {
   /*height:300px;*/
   word-wrap: break-word;
-
 }
 .delete_button {
   max-width:10%;
