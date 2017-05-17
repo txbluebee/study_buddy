@@ -6,14 +6,25 @@ ENV['RACK_ENV'] = 'test'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+############################
 ####### Home Page ##########
+############################
 
 get('/') do
   erb(:index)
 end
 
-####### User login ########
-get ('/user_login') do
+############################
+####### User login #########
+############################
+
+#link to register page
+get ('/user/signup') do
+  erb(:user_signup)
+end
+
+#User Sign in
+get('/user/login') do
   erb(:user_login)
 end
 
@@ -27,22 +38,23 @@ post ('/users/new') do
     redirect('/')
   else
     @errors = @new_user
-    erb(:user_login)
+    erb(:user_signup)
   end
 end
 
 #User Login
-post ('/users/login') do
-  user_name = params.fetch('login_name')
+post ('/users_login') do
+  @user_input_name = params.fetch('login_name')
   @password = params.fetch('password')
-  @user = User.find_by(login: user_name)
-  if @user.password() == @password
+  @user = User.find_by(login: @user_input_name)
+  if @user_input_name && @user == nil
+    erb(:user_login)
+  elsif @user.password() == @password
     redirect('/users/'.concat((@user.id).to_s) + '/languages')
   else
     erb(:user_login)
   end
 end
-
 
 get('/users/:user_id/languages') do
   @user = User.find(params.fetch('user_id').to_i)
@@ -212,7 +224,7 @@ end
 get('/users/:user_id/languages/:language_id/tips') do
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
-  @tips = Tip.all()
+  @tips = @language.tips.all()
   erb(:tips)
 end
 
@@ -221,6 +233,6 @@ post('/users/:user_id/languages/:language_id/tips/new') do
   @language = Language.find(params.fetch("language_id").to_i())
   tip_name = params.fetch('name')
   tip_description = params.fetch('description')
-  @tip = Tip.create({:name => tip_name, :description => tip_description})
+  @tip = Tip.create({:name => tip_name, :description => tip_description, :language_id => @language.id()})
   redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end

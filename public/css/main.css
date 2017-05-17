@@ -1,7 +1,4 @@
-/*Index*/
-.jumbotron {
-  margin-bottom: 0;
-}
+
 
 /*
  * Globals
@@ -40,6 +37,10 @@ body {
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
 
+* {
+  position: relative;;
+}
+
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
@@ -49,68 +50,24 @@ body {
   -webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
           box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
 
-  background: url('../img/cover.jpg');
+  background: url('../img/cutekid.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 .site-wrapper-inner {
   display: table-cell;
-  vertical-align: top;
 }
 .cover-container {
   margin-right: auto;
   margin-left: auto;
 }
 
-/* Padding for spacing */
-.inner {
-  padding: 2rem;
-}
-
 
 /*
  * Header
  */
-
-.masthead {
-  margin-bottom: 2rem;
-}
-
-.masthead-brand {
-  margin-bottom: 0;
-}
-
-.nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: bold;
-  color: rgba(255,255,255,.5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255,255,255,.25);
-}
-
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
+ .cover-heading{}
 
 
 /*
@@ -125,6 +82,13 @@ body {
   font-weight: bold;
 }
 
+.inner {
+  padding: 2rem;
+  position: absolute;
+  left: 30rem;
+  padding-bottom: 10%;
+  top: -7rem;
+}
 
 /*
  * Footer
@@ -141,29 +105,18 @@ body {
 
 @media (min-width: 40em) {
   /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
+
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
   }
   /* Handle the widths */
-  .masthead,
-  .mastfoot,
   .cover-container {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
   }
 }
 
 @media (min-width: 62em) {
-  .masthead,
-  .mastfoot,
   .cover-container {
     width: 42rem;
   }
@@ -181,8 +134,33 @@ body {
 
 /* User Login Form*/
 
-#user_sign_up, #success_signup{
-  display: none;
+#user_sign_up,
+#user_sign_in,
+#language-menu {
+  vertical-align: middle;
+  margin-top: 16rem;
 }
 
+#add_language {
+  display: none;
+  margin-top: 13rem;
+}
+.errors-msg ul{
+  list-style: none;
+  text-align: left;
+  left: 22rem;
+}
+
+/*Dashboard*/
+.jumbotron {
+  margin-bottom: 0;
+}
+
+
+/*Languages Page*/
+
+#language-menu h2 {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+}
  
