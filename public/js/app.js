@@ -1,6 +1,9 @@
 
 $(document).ready(function(){
-
+  //add new languages
+  $('.add_language').click(function(){
+    $('#add_language').show();
+  });
 
 
 

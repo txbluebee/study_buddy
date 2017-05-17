@@ -134,13 +134,17 @@ body {
 
 /* User Login Form*/
 
-#user_sign_up, #user_sign_in{
+#user_sign_up,
+#user_sign_in,
+#language-menu {
   vertical-align: middle;
   margin-top: 16rem;
 }
 
-
-
+#add_language {
+  display: none;
+  margin-top: 13rem;
+}
 .errors-msg ul{
   list-style: none;
   text-align: left;
@@ -150,4 +154,12 @@ body {
 /*Dashboard*/
 .jumbotron {
   margin-bottom: 0;
+}
+
+
+/*Languages Page*/
+
+#language-menu h2 {
+  font-size: 4rem;
+  margin-bottom: 3rem;
 }

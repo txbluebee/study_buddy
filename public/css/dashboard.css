@@ -1,0 +1,24 @@
+/*#cover {
+  height: 32rem;
+  background-color: #777;
+  background: url('../img/cover.jpg') center center no-repeat;
+  background-size: cover;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+}*/
+
+
+
+#cover-caption {
+  font-size: 1.4rem;
+  font-weight: 200;
+  max-width: 60rem;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+#cover-caption p{
+  font-size: 35px;
+}
