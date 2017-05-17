@@ -1,7 +1,11 @@
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
 #cover {
   height: 20rem;
   background-color: #777;
-  background: url('../img/study.jpg') center center no-repeat;
+  background: url('../img/dashboard1.jpg') center center no-repeat;
   background-size: cover;
   min-width: 100%;
   display: flex;
@@ -19,22 +23,41 @@
   color: white;
 }
 
-#cover-caption p{
-  font-size: 35px;
+#cover-caption p {
+  font-size: 2em;
 }
 
-.projects_button {
+.projects_button  {
   width: 300px;
   height: 200px;
-  background-color: #FF6666;
   border: 2px;
   border-radius: 5px;
-  font-size: 40px;
-  font-family: helvetica;
-  vertical-align: middle;
-  line-height: 200px;
+  font-size: 3em;
+  font-family: 'Trebuchet MS', sans-serif;
+  margin: 30px;
+
 }
 
+#pink {
+  background-color: #FF6666;
+}
+
+#blue {
+  background-color: #5bc0eb;
+}
+
+#yellow {
+  background-color: #f9c80e;
+}
+
+#green {
+  background-color: #9fd356;
+}
+.button_text {
+  vertical-align: middle;
+  line-height: 200px;
+
+}
  .dashboard_button a:hover {
   text-decoration: none;
 }
