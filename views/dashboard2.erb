@@ -1,6 +1,7 @@
+<!-- Dashboard Header -->
 <section id="cover">
   <div id="cover-caption">
-    <h1 class="display-3"><%=@language.name() %></h1>
+    <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>"><h1 class="display-3"><%=@language.name() %></h1></a>
     <p class="lead display-5"><%= @user.name() %></p>
   </div>
 </section>

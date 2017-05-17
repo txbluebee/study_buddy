@@ -196,7 +196,9 @@ delete('/users/:user_id/languages/:language_id/tags/:tag_id/flashcards/:flashcar
 end
 
 #Project group
-get('/projects/new') do
+get('/users/:user_id/languages/:language_id/projects/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
   erb(:project_form)
 end
 
@@ -209,13 +211,15 @@ get('/users/:user_id/languages/:language_id/projects') do
   erb(:projects)
 end
 
-post('/projects/new') do
+post('/users/:user_id/languages/:language_id/projects/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
   name = params.fetch('name')
   date = params.fetch('date')
   description = params.fetch('description')
   github = params.fetch('github')
-  @project = Project.create({:name => name, :date => date, :description => description, :github => github})
-  redirect('/projects')
+  @project = Project.create({:name => name, :date => date, :description => description, :github => github, :language_id => @language.id})
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/projects')
 end
 
 #Tips
