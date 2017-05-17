@@ -6,14 +6,25 @@ ENV['RACK_ENV'] = 'test'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+############################
 ####### Home Page ##########
+############################
 
 get('/') do
   erb(:index)
 end
 
-####### User login ########
-get ('/user_login') do
+############################
+####### User login #########
+############################
+
+#link to register page
+get ('/user/signup') do
+  erb(:user_signup)
+end
+
+#User Sign in
+get('/user/login') do
   erb(:user_login)
 end
 
@@ -27,7 +38,7 @@ post ('/users/new') do
     redirect('/')
   else
     @errors = @new_user
-    erb(:user_login)
+    erb(:user_signup)
   end
 end
 
