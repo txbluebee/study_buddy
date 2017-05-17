@@ -89,7 +89,7 @@ get('/users/:user_id/languages/:language_id') do
   @user = User.find(user_id)
   language_id = params.fetch('language_id').to_i
   @language = Language.find(language_id)
-  erb(:dashboard)
+  erb(:dashboard2)
 end
 
 #Tag group
@@ -200,8 +200,12 @@ get('/projects/new') do
   erb(:project_form)
 end
 
-get('/projects') do
-  @projects = Project.all()
+get('/users/:user_id/languages/:language_id/projects') do
+  user_id = params.fetch('user_id').to_i
+  @user = User.find(user_id)
+  language_id = params.fetch('language_id').to_i
+  @language = Language.find(language_id)
+  @projects = @language.projects()
   erb(:projects)
 end
 
