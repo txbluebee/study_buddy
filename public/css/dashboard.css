@@ -100,3 +100,8 @@ body {
 .card-blockquote{
   background-color:#333;
 }
+
+.project_form_group{
+margin: 50px;
+padding-bottom:-20px;
+}
