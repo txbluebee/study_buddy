@@ -7,18 +7,17 @@
 </section>
 
 
-<div class="container">
+<div class="container" id="background">
   <h1> All Projects</h1>
-  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new"><p>add project</p></a>
+  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new"><p>Add project</p></a>
     <% if @projects.any?() %>
       <% @projects.each() do |project| %>
-        <div class="card card-outline-primary mb-3 text-center">
-          <div class="card-block">
-            <blockquote class="card-blockquote">
-              <p>Project: <%= project.name%></p>
+        <div class="card project_card">
+            <h3 class="card-header project_card_header"><%= project.name%></h3>
+            <div class="card-blockquote">
               <p>Date: <%= project.date%></p>
               <p>Description: <%= project.description%></p>
-              <p >Github: <%=  project.github%></p>
+              <a href="<%=project.github%>"><p >Github Link</p></a>
           </div>
         </div>
       <% end %>

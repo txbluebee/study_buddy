@@ -35,8 +35,10 @@ body {
   border-radius: 5px;
   font-size: 3em;
   font-family: 'Trebuchet MS', sans-serif;
-  margin: 30px;
   text-align: center;
+  display: block;
+  margin: auto;
+  margin-top: 25%;
 }
 
 #pink {
@@ -56,12 +58,14 @@ body {
 }
 .button_text {
   vertical-align: middle;
-  line-height: 200px;
+  line-height: 200px
+
 
 }
  .dashboard_button a:hover, #header_link{
   text-decoration: none;
   text-align: center;
+
 }
 
 /***********/
@@ -91,4 +95,22 @@ body {
 
 .tip_description {
   background-color: #333;
+}
+
+/*Project CSS styles*/
+.project_card{
+  background-color:#5bc0eb;
+}
+
+.project_card_header{
+  background-color:#5bc0eb;
+}
+
+.card-blockquote{
+  background-color:#333;
+}
+
+.project_form_group{
+margin: 50px;
+padding-bottom:-20px;
 }

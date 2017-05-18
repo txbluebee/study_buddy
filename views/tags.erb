@@ -8,23 +8,25 @@
   </section>
 </a>
 
-<div class="row">
+<div class="row" id="tag_title" >
   <div class="col-md-6">
 
-    <br>
-    <% if @tags.any?() %>
-      <h2>Available tags</h2>
-        <ul>
-          <%@tags.each() do |tag|%>
-            <p><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= tag.id() %>"><%= tag.name() %></a></p>
-          <% end %>
-        </ul>
-    <% end %>
+    <div class="tags_row">
+      <% if @tags.any?() %>
+        <h3>Available tags</h3>
+            <%@tags.each() do |tag|%>
+              <p><a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= tag.id() %>"><%= tag.name() %></a></p>
+            <% end %>
+      <% end %>
+    </div>
+
   </div>
+
+
   <div class="col-md-6">
-    <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/add_tag" method="post">
+    <form class="input_form" action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/add_tag" method="post">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name"><h3>Name</h3></label>
         <input class="form-control" type="text" name="name">
       </div>
       <div class="btn-group">
