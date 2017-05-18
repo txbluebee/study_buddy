@@ -64,3 +64,16 @@ body {
   text-decoration: none;
   text-align: center;
 }
+
+/*Project CSS styles*/
+.project_card{
+  background-color:#5bc0eb;
+}
+
+.project_card_header{
+  background-color:#5bc0eb;
+}
+
+.card-blockquote{
+  background-color:#333;
+}
