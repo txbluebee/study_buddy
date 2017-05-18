@@ -1,13 +1,17 @@
-<section id="cover">
-  <div id="cover-caption">
-    <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>"><h1 class="display-3"><%=@language.name() %></h1></a>
-    <p class="lead display-5"><%= @user.name() %></p>
-  </div>
-</section>
-
+<!-- Header -->
+<a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>" id="header_link">
+  <section id="cover">
+    <div id="cover-caption">
+    <h1 class="display-3"><%=@language.name() %></h1>
+      <p class="lead display-5"><%= @user.name() %></p>
+        <h3>Resources</h3>
+    </div>
+  </section>
+</a>
 
 <div class="container">
-  <h1>Resources</h1>
+  <br>
+  <br>
   <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/resources/new" method="post">
     <div class="form-group">
       <label for="name">Name: </label>
@@ -15,11 +19,34 @@
     </div>
 
     <div class="form-group">
-      <label for="description">Link: </label>
-      <input id="description" name="description" type="text"  class="form-control">
+      <label for="link">Link: </label>
+      <input id="link" name="link" type="text"  class="form-control">
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
   </form>
+  <br>
+  <br>
+
+  <% if @resources.any?() %>
+    <% @resources.each() do |resource| %>
+    <div class="card tip_card text-left">
+      <div class="card-header tip_header">
+        <h3><%= resource.name() %></h3>
+        <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/resources/<%= resource.id()%>/delete" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <input type="image" class="delete_button_resources" src="/img/delete_w.svg" type="submit">
+        </form>
+      </div>
+      <div class="card-block tip_description">
+        <a href="<%= resource.link() %>"><p class="card-text" ><%= resource.link() %></p></a>
+      </div>
+    </div>
+    <% end %>
+
+  <% else %>
+    <h4>No resources added yet.</h4>
+  <% end %>
+
 
 </div>

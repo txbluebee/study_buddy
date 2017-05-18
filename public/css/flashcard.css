@@ -45,14 +45,16 @@
   margin: auto;
   color: black;
   background-color: white;
+  padding-top: 200px;
 }
 
 .front {
   padding-top: 200px;
+  font-style: italic;
 }
 
 .front p, .back p {
-  font-size: 30px;
+  font-size: 3.75rem;
 }
 
 
