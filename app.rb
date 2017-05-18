@@ -232,7 +232,7 @@ post('/users/:user_id/languages/:language_id/projects/new') do
 end
 
 #Tips
-get('/users/:user_id/languages/:language_id/resources/new') do
+get('/users/:user_id/languages/:language_id/tips/new') do
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
   erb(:tip_form)
@@ -270,6 +270,13 @@ get('/users/:user_id/languages/:language_id/resources') do
   @language = Language.find(params.fetch("language_id").to_i())
   @resources = @language.resources()
   erb(:resources)
+end
+
+get('/users/:user_id/languages/:language_id/resources/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @resources = @language.resources()
+  erb(:resource_form)
 end
 
 #add

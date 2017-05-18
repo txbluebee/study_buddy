@@ -11,24 +11,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <a class="link-new-tip" href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new">Add new tip</a>
+      <a class="link-new-tip" href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new"><h3>Add new tip</h3></a>
       <% if @tips.any?() %>
         <% @tips.each() do |tip| %>
-        <div class="card tip_card text-left">
-          <!-- delete button -->
-          <div id="delete-btn" class = "text-right">
-            <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/<%= tip.id() %>/delete" method="post">
-              <input name="_method" type="hidden" value="delete">
-              <button class = "delete_btn mt-1" type="submit"><i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i></button>
-            </form>
+          <div class="card tip_card text-left">
+            <div class="card-header tip_header">
+              <h3><%= tip.name() %></h3>
+              <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/<%= tip.id() %>/delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <input type="image" class="delete_button_resources" src="/img/delete_w.svg" type="submit">
+              </form>
+            </div>
+            <div class="card-block tip_description">
+              <p class="card-text lead" ><%= tip.description() %></p>
+            </div>
           </div>
-          <h4 class="card-header tip_header pt-0">
-            <%= tip.name() %>
-          </h4>
-          <div class="card-block tip_description">
-            <p class="card-text lead" ><%= tip.description() %></p>
-          </div>
-        </div>
         <% end %>
 
       <% else %>
