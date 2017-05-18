@@ -252,6 +252,16 @@ post('/users/:user_id/languages/:language_id/tips/new') do
   redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end
 
+#delete a tip
+delete('/users/:user_id/languages/:language_id/tips/:tip_id/delete') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @tip = Tip.find(params.fetch("tip_id").to_i())
+  @tip.delete()
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
+end
+
+
 # Resources
 get('/users/:user_id/languages/:language_id/resources') do
 

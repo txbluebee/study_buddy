@@ -9,14 +9,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h1>Tips</h1>
-      <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new">Add new tip</a>
+      <a class="link-new-tip" href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new">Add new tip</a>
       <% if @tips.any?() %>
         <% @tips.each() do |tip| %>
         <div class="card tip_card text-left">
-          <h3 class="card-header tip_header"><%= tip.name() %></h3>
+          <!-- delete button -->
+          <div id="delete-btn" class = "text-right">
+            <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/<%= tip.id() %>/delete" method="post">
+              <input name="_method" type="hidden" value="delete">
+              <button class = "delete_btn mt-1" type="submit"><i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i></button>
+            </form>
+          </div>
+          <h4 class="card-header tip_header pt-0">
+            <%= tip.name() %>
+          </h4>
           <div class="card-block tip_description">
-            <p class="card-text" ><%= tip.description() %></p>
+            <p class="card-text lead" ><%= tip.description() %></p>
           </div>
         </div>
         <% end %>

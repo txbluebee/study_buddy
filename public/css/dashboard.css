@@ -5,8 +5,7 @@ body {
 
 #cover {
   height: 20rem;
-  /*background: url('../img/dashboard1.jpg') center center no-repeat;*/
-  border: 10px double white;
+  background: url('../img/dashboard1.jpg') center center no-repeat;
   background-size: cover;
   min-width: 100%;
   display: flex;
@@ -83,18 +82,40 @@ body {
 /***********/
 /**Tips*****/
 /***********/
+
+
+.link-new-tip {
+  display: inline-block;
+  margin: 2rem 0;
+}
+
+.tip_card {
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.delete_btn {
+  background-color: #9fd356;
+  color: white;
+  border: none;
+  right: 0.5rem;
+}
+
+#delete-btn {
+  background-color: #9fd356;
+  color: white;
+}
+
 .tip_header {
   background-color: #9fd356;
   padding-left: 2rem;
+  font-weight: bolder;
   border-bottom: 3px solid white;
-}
-.tip_card {
-  border: 3px solid white;
-
 }
 
 .tip_description {
   background-color: #333;
+  padding-left: 2rem;
 }
 
 /*Project CSS styles*/
