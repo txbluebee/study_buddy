@@ -8,23 +8,27 @@
     </section>
   </a>
 
-
-  <h1>Tips</h1>
-  <% if @tips.any?() %>
-    <% @tips.each() do |tip| %>
-    <div class="list-group">
-      <a class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1"><%= tip.name%></h5>
-          <small><%= @language.name() %></small>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1>Tips</h1>
+      <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new">Add new tip</a>
+      <% if @tips.any?() %>
+        <% @tips.each() do |tip| %>
+        <div class="card tip_card text-left">
+          <h3 class="card-header tip_header"><%= tip.name() %></h3>
+          <div class="card-block tip_description">
+            <p class="card-text" ><%= tip.description() %></p>
+          </div>
         </div>
-        <p class="mb-1"><%= tip.description%></p>
-      </a>
-    </div>
-    <% end %>
+        <% end %>
 
-  <% else %>
-    <h4>No tips added yet.</h4>
-  <% end %>
-  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new">Add new tip</a>
+      <% else %>
+        <h4>No tips added yet.</h4>
+      <% end %>
+    </div>
+
+  </div>
+
+
 </div>
