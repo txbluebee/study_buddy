@@ -272,6 +272,13 @@ get('/users/:user_id/languages/:language_id/resources') do
   erb(:resources)
 end
 
+get('/users/:user_id/languages/:language_id/resources/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @resources = @language.resources()
+  erb(:resource_form)
+end
+
 #add
 post('/users/:user_id/languages/:language_id/resources/new') do
   @user = User.find(params.fetch("user_id").to_i())

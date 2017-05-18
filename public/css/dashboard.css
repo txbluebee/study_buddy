@@ -66,14 +66,56 @@ body {
  .dashboard_button a:hover, #header_link{
   text-decoration: none;
   text-align: center;
-
 }
 
+
+.learning-btns {
+  padding-bottom: 5rem;
+}
+/***********/
+/**Projects*****/
+/***********/
+
+.project-cover {
+  background-color: #5bc0eb;
+}
 
 
 /***********/
 /**Tips*****/
 /***********/
+<<<<<<< HEAD
+=======
+
+
+.link-new-tip {
+  display: inline-block;
+  margin: 2rem 0;
+}
+
+.tip_card {
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.delete_btn {
+  background-color: #9fd356;
+  color: white;
+  border: none;
+  right: 0.5rem;
+}
+
+#delete-btn {
+  background-color: #9fd356;
+  color: white;
+}
+
+.tip_header_resources {
+  background-color: #ffc05c;
+  padding-left: 2rem;
+  font-weight: bolder;
+  border-bottom: 3px solid white;
+}
 .tip_header {
   background-color: #9fd356;
   padding-left: 2rem;
@@ -105,7 +147,7 @@ body {
 }
 
 .card-blockquote p{
-  
+
   font-size: 20pt;
 }
 
