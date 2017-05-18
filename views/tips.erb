@@ -1,10 +1,14 @@
+<!-- Dashboard Header -->
+  <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>" id="header_link">
+    <section id="cover">
+      <div id="cover-caption">
+      <h1 class="display-3"><%=@language.name() %></h1>
+        <p class="lead display-5"><%= @user.name() %></p>
+      </div>
+    </section>
+  </a>
 
-<div class="container">
-  <div class="jumbotron">
-    <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>">My Learning Dashboard</a>
-    <h5>Hello <%=@user.name() %></h5>
-    <h1 class="text-center"><%=@language.name %></h1>
-  </div>
+
   <h1>Tips</h1>
   <% if @tips.any?() %>
     <% @tips.each() do |tip| %>
