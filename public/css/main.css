@@ -172,8 +172,7 @@ body {
 
 .project_form{
   font-size: 25pt;
-
-/*resources delete button*/
+}
 
 .delete_button_resources {
   max-width:30px;
@@ -181,4 +180,11 @@ body {
   position: absolute;
   bottom:10px;
   right:0;
+}
+
+.tip_header_projects {
+  background-color: #5bc0eb;
+  padding-left: 2rem;
+  font-weight: bolder;
+  border-bottom: 3px solid white;
 }
