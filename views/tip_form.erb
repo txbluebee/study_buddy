@@ -8,19 +8,25 @@
     </section>
   </a>
 <div class="container">
-  <h1>Tips</h1>
-  <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new" method="post">
-    <div class="form-group">
-      <label for="name">Name: </label>
-      <input id="name" name="name" type="text"  class="form-control">
-    </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="my-4">Add New Tip</h1>
+      <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new" method="post">
+        <div class="form-group text-left">
+          <label for="name" class="">Name: </label>
+          <input id="name" name="name" type="text"  class="form-control">
+        </div>
 
-    <div class="form-group">
-      <label for="description">Description: </label>
-      <input id="description" name="description" type="text"  class="form-control">
-    </div>
+        <div class="form-group text-left">
+          <label for="description">Description:</label>
+          <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
 
 </div>
