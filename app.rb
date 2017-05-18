@@ -251,3 +251,7 @@ post('/users/:user_id/languages/:language_id/tips/new') do
   @tip = Tip.create({:name => tip_name, :description => tip_description, :language_id => @language.id()})
   redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end
+
+get('/users/:user_id/languages/:language_id/resources') do
+erb(:resources)
+end

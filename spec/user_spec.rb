@@ -11,7 +11,6 @@ describe(User) do
     test_user1 = User.new({:name => "Dan"})
     test_user1.save()
     test1234 = User.find_by({:name => "Dan"})
-    binding.pry
     test_user2 = User.new({:name => "Dan"})
     expect(test_user2.save()).to(eq(false))
   end

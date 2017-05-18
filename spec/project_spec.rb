@@ -1,6 +1,10 @@
 require('spec_helper')
 
 describe(Project) do
+  it("will capitalize first letter of user entry") do
+    test_project = Project.create({:name => "study"})
+    expect(test_project.name).to(eq("Study"))
+  end
   describe("#name") do
     it("will return project by name") do
       test_project = Project.create({:name => "Study Buddy"})

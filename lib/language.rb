@@ -5,6 +5,13 @@ class Language < ActiveRecord::Base
   has_many :tags
 
 
-  validates :name, :presence => true
 
+  validates :name, :presence => true
+  before_save(:upcase_name)
+
+  private
+
+  define_method(:upcase_name) do
+    self.name=(name().capitalize())
+  end
 end
