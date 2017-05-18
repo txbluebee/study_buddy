@@ -35,7 +35,7 @@ post ('/users/new') do
   password = params.fetch('password')
   @new_user = User.new({:name => sign_up_name, :password => password, :login => user_name })
   if @new_user.save()
-    redirect('/')
+    redirect('/user/login')
   else
     @errors = @new_user
     erb(:user_signup)
