@@ -4,16 +4,14 @@
     <div id="cover-caption">
     <h1 class="display-3"><%=@language.name() %></h1>
       <p class="lead display-5"><%= @user.name() %></p>
+      <h3><%= @tag.name() %> flashcards</h3>
     </div>
   </section>
 </a>
 
 <div class="container">
-  <h3></h3>
-<h1><%= @tag.name() %> flashcards</h1>
-
 <br>
-
+<br>
 <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new" method="post">
   <div class="form-group">
     <label for="question">Question: </label>

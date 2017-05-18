@@ -142,10 +142,18 @@ body {
   margin-top: 16rem;
 }
 
+.errors-msg {
+  position: absolute;
+  color: yellow;
+}
+
+.home-icon {
+  margin-top: 6rem;
+}
+
 .errors-msg ul{
   list-style: none;
   text-align: left;
-  left: 22rem;
 }
 
 /*Dashboard*/
@@ -164,4 +172,13 @@ body {
 
 .project_form{
   font-size: 25pt;
+
+/*resources delete button*/
+
+.delete_button_resources {
+  max-width:30px;
+  height:auto;
+  position: absolute;
+  bottom:10px;
+  right:0;
 }

@@ -226,11 +226,13 @@ post('/users/:user_id/languages/:language_id/projects/new') do
   description = params.fetch('description')
   github = params.fetch('github')
   @project = Project.create({:name => name, :date => date, :description => description, :github => github, :language_id => @language.id})
+  @projects = @language.projects()
+
   redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/projects')
 end
 
 #Tips
-get('/users/:user_id/languages/:language_id/tips/new') do
+get('/users/:user_id/languages/:language_id/resources/new') do
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
   erb(:tip_form)
@@ -252,11 +254,41 @@ post('/users/:user_id/languages/:language_id/tips/new') do
   redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
 end
 
+#delete a tip
+delete('/users/:user_id/languages/:language_id/tips/:tip_id/delete') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @tip = Tip.find(params.fetch("tip_id").to_i())
+  @tip.delete()
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/tips')
+end
+
+
 # Resources
 get('/users/:user_id/languages/:language_id/resources') do
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
   @resources = @language.resources()
+  erb(:resources)
+end
+
+#add
+post('/users/:user_id/languages/:language_id/resources/new') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  resource_name = params.fetch('name')
+  resource_link = params.fetch('link')
+  @resource = Resource.create({:name => resource_name, :link => resource_link, :language_id => @language.id()})
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/resources')
+end
+
+#delete
+delete('/users/:user_id/languages/:language_id/resources/:resource_id/delete') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @resource = Resource.find(params.fetch("resource_id").to_i())
+  @resources = @language.resources()
+  @resource.delete()
   erb(:resources)
 end
 
