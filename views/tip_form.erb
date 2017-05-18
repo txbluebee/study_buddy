@@ -1,14 +1,26 @@
-<h1>Tips</h1>
-<form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new" method="post">
-  <div class="form-group">
-    <label for="name">Name: </label>
-    <input id="name" name="name" type="text"  class="form-control">
-  </div>
+<!-- Dashboard Header -->
+  <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>" id="header_link">
+    <section id="cover">
+      <div id="cover-caption">
+      <h1 class="display-3"><%=@language.name() %></h1>
+        <p class="lead display-5"><%= @user.name() %></p>
+      </div>
+    </section>
+  </a>
+<div class="container">
+  <h1>Tips</h1>
+  <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips/new" method="post">
+    <div class="form-group">
+      <label for="name">Name: </label>
+      <input id="name" name="name" type="text"  class="form-control">
+    </div>
 
-  <div class="form-group">
-    <label for="description">Description: </label>
-    <input id="description" name="description" type="text"  class="form-control">
-  </div>
+    <div class="form-group">
+      <label for="description">Description: </label>
+      <input id="description" name="description" type="text"  class="form-control">
+    </div>
 
-  <button type="submit" class="btn btn-primary">Save</button>
-</form>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+</div>

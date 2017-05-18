@@ -63,6 +63,13 @@ get('/users/:user_id/languages') do
 end
 
 
+#link to language form
+
+get ("/users/:user_id/languages/new") do
+  @user = User.find(params.fetch('user_id').to_i)
+  erb(:language_form)
+end
+
 # Add New Language
 post ("/users/:user_id/languages/new") do
   user_id = params.fetch('user_id').to_i
