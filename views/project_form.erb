@@ -1,23 +1,31 @@
+<section id="cover">
+  <div id="cover-caption">
+    <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>"><h1 class="display-3"><%=@language.name() %></h1></a>
+    <p class="lead display-5"><%= @user.name() %></p>
+  </div>
+</section>
+
+
 <h1>Add a Project</h1>
 <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new" method="post">
 
-  <div class="form-group project_form_group">
+  <div class="form-group project_form_group ">
     <label for="name">Name: </label>
     <input id="name" name="name" type="text"  class="form-control" required >
   </div>
 
-  <div class="form-group project_form_group">
+  <div class="form-group project_form_group project_form">
     <label for="date">Date: </label>
     <input id="date" name="date" type="date"  class="form-control" required>
   </div>
 
-  <div class="form-group project_form_group">
+  <div class="form-group project_form_group project_form">
     <label for="description">Description: </label>
     <input id="description" name="description" type="text"  class="form-control" required>
   </div>
 
-  <div class="form-group project_form_group">
-    <label for="github">Github: </label>
+  <div class="form-group project_form_group project_form">
+    <label for="github">Github Repo Link: </label>
     <input id="github" name="github" type="text"  class="form-control" required>
   </div>
 

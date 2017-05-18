@@ -254,9 +254,16 @@ end
 
 # Resources
 get('/users/:user_id/languages/:language_id/resources') do
-
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
   @resources = @language.resources()
   erb(:resources)
+end
+
+#Delete Projects##
+delete('/users/:user_id/languages/:language_id/projects/new') do
+  @user = User.find(params.fetch("id").to_i())
+  @language = Language.find(params.fetch("id").to_i())
+  @project = Project.find(params.fetch("id").to_i())
+  erb(:projects)
 end

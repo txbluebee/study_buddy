@@ -18,11 +18,17 @@
               <p>Date: <%= project.date%></p>
               <p>Description: <%= project.description%></p>
               <a href="<%=project.github%>"><p >Github Link</p></a>
+
+              <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/<delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <input type="image" class="delete_button" src="/img/delete_b.svg" type="submit">
+              </form>
+
           </div>
         </div>
       <% end %>
     </ul>
   <% else %>
-    <h4>No projects added yet. Please <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new">add project</a></h4>
+    <h4>No projects added yet. Please <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new">Add project</a></h4>
   <% end %>
 </div>
