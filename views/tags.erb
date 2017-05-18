@@ -23,8 +23,8 @@
   </div>
 
 
-  <div class="col-md-6" id="input_form">
-    <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/add_tag" method="post">
+  <div class="col-md-6">
+    <form class="input_form" action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/add_tag" method="post">
       <div class="form-group">
         <label for="name"><h3>Name</h3></label>
         <input class="form-control" type="text" name="name">

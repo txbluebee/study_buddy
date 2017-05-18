@@ -3,6 +3,7 @@ class Language < ActiveRecord::Base
   has_many :tips
   has_many :projects
   has_many :tags
+  has_many :resources
 
 
 

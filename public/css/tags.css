@@ -3,7 +3,8 @@
 
 }
 
-#input_form {
-
-  padding: auto;
+.input_form {
+  padding-right: 10%;
+  padding-left: 10%;
+ 
 }

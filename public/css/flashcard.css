@@ -41,11 +41,14 @@
   height: 50rem;                                   /* Stretches side to inhabit full size of flashcard */
   width: 70rem;
   text-align: center;
-  margin: auto;
   padding: 50px;
+  margin: auto;
   color: black;
   background-color: white;
+}
 
+.front {
+  padding-top: 200px;
 }
 
 .front p, .back p {
@@ -54,14 +57,20 @@
 
 
 .front_preview  {
-
+  background-image: url("../img/index2.jpg");
+  height: 300px;
+  width:  500px;
+  color: black;
+  font-size: 2em;
+  padding: 5%;
+  margin: 10% auto;
 }
 
 .back_preview {
   display: none;
 }
 
-.flashcard_preview {
+/*.flashcard_preview {
   height: 300px;
   width:  500px;
   margin: 10% auto;
@@ -71,13 +80,9 @@
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
   padding: 10px;
-  background-color: #ff714d;
+  background-image: url("../img/index2.jpg")
   font-size: 2em;
-}
-.stage_preview {
-
-}
-
+}*/
 
 .flashcard_text {
 
@@ -87,13 +92,13 @@
 }
 
 .limit {
-  /*height:300px;*/
+  height:300px;
   word-wrap: break-word;
 }
 .delete_button {
-  max-width:10%;
+  max-width:9%;
   height:auto;
   position: absolute;
-  bottom: 10px;
+  bottom: 70px;
   right:5px;
 }
