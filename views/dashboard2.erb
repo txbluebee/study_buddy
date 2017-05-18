@@ -8,19 +8,34 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-          <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags"><h3>Flashcard</h3></a>
+      <div class="col-md-6 dashboard_button">
+          <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags">
+            <div class="projects_button" id="pink">
+              <h3 class="button_text">FLASHCARDS</h3>
+            </div></a>
       </div>
-      <div class="col-md-6">
-        <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects"><h3>Projects</h3><a>
+      <div class="col-md-6 dashboard_button">
+        <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects">
+          <div class="projects_button" id="blue">
+            <h3 class="button_text">PROJECTS</h3>
+          </div>
+            <a>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <h3>Tips</h3>
+      <div class="col-md-6 dashboard_button">
+        <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips">
+        <div class="projects_button" id="green">
+          <h3 class="button_text">TIPS</h3>
+        </div>
+      </a>
       </div>
-      <div class="col-md-6">
-        <h3>Resources</h3>
+      <div class="col-md-6 dashboard_button">
+        <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/resources">
+        <div class="projects_button" id="yellow">
+        <h3 class="button_text">RESOURCES</h3>
       </div>
-    </div>
+    </a>
   </div>
+</div>
+</div>

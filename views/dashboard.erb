@@ -9,11 +9,22 @@
   <br>
   <a href="/users/<%=@user.id() %>/languages">Select Another Language</a>
   <br>
-  <a href="/projects">Projects</a>
+  <div class="row">
+    <div class="col-md-4 dashboard_button">
+      <a href="/projects"><div class="projects_button">
+        <p>Projects</p>
+      </div></a>
+    </div>
+  </div>
+
   <br>
-  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips">Tips</a>
+  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tips" class="dashboard_button">Tips</a>
   <br>
   <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags">Tags</a>
   <br>
+
+
+
+
 
 </div>
