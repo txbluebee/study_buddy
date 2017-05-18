@@ -64,9 +64,11 @@ body {
  .dashboard_button a:hover, #header_link{
   text-decoration: none;
   text-align: center;
-
 }
 
+.learning-btns {
+  padding-bottom: 5rem;
+}
 /***********/
 /**Projects*****/
 /***********/
