@@ -1,3 +1,13 @@
+<!-- Header -->
+<a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>" id="header_link">
+  <section id="cover">
+    <div id="cover-caption">
+    <h1 class="display-3"><%=@language.name() %></h1>
+      <p class="lead display-5"><%= @user.name() %></p>
+    </div>
+  </section>
+</a>
+
 <div class="row">
   <div class="col-md-6">
 

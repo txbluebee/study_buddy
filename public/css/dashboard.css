@@ -36,6 +36,7 @@ body {
   font-size: 3em;
   font-family: 'Trebuchet MS', sans-serif;
   margin: 30px;
+  text-align: center;
 
 }
 
@@ -59,6 +60,7 @@ body {
   line-height: 200px;
 
 }
- .dashboard_button a:hover {
+ .dashboard_button a:hover, #header_link{
   text-decoration: none;
+  text-align: center;
 }

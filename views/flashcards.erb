@@ -1,10 +1,19 @@
+<!-- Header -->
+<a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>" id="header_link">
+  <section id="cover">
+    <div id="cover-caption">
+    <h1 class="display-3"><%=@language.name() %></h1>
+      <p class="lead display-5"><%= @user.name() %></p>
+    </div>
+  </section>
+</a>
+
 <div class="container">
   <h3></h3>
-<h3>Current Tag <%= @tag.name() %></h3>
-<h1>Flashcards</h1>
+<h1><%= @tag.name() %> flashcards</h1>
+
 <br>
-<!-- <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new">Add A New Flashcard</a>
-<br><br> -->
+
 <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/new" method="post">
   <div class="form-group">
     <label for="question">Question: </label>
