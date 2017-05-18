@@ -4,7 +4,7 @@ describe(Tip) do
   describe("#name") do
     it("will return name of tip") do
       test_tip = Tip.create({:name => "create checkbox"})
-      expect(test_tip.name).to(eq("create checkbox"))
+      expect(test_tip.name).to(eq("Create checkbox"))
     end
   end
   describe("#language") do
