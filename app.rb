@@ -298,3 +298,11 @@ delete('/users/:user_id/languages/:language_id/resources/:resource_id/delete') d
   @resource.delete()
   erb(:resources)
 end
+
+#Delete Projects##
+delete('/users/:user_id/languages/:language_id/projects/new') do
+  @user = User.find(params.fetch("id").to_i())
+  @language = Language.find(params.fetch("id").to_i())
+  @project = Project.find(params.fetch("id").to_i())
+  erb(:projects)
+end

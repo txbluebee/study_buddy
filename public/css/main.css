@@ -170,6 +170,9 @@ body {
   margin-bottom: 3rem;
 }
 
+.project_form{
+  font-size: 25pt;
+
 /*resources delete button*/
 
 .delete_button_resources {

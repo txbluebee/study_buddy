@@ -47,7 +47,7 @@ localhost:4567
 ```
 ## Support and contact details
 
-Should any issues occur contact Brian, and only Brian at
+Should any issues occur contact Brian, and only Brian
 
 ## Technologies Used
  HTML, CSS, Bootstrap, Ruby, Sinatra, Capybara, Postgres, PSQL, ActiveRecord,
