@@ -18,36 +18,17 @@
             </div>
             <br>
             <button class="btn btn-primary btn-lg" type="submit">Study</button>
-            <a href="/" type="button" role="button" class="btn btn-success btn-lg ml-2 add_language">Add language </a>
+            <a href="/users/<%= @user.id() %>/languages/new" role="button" class="btn btn-success btn-lg ml-2 add_language">Add language </a>
           </form>
 
-          <% else  %>
-            <div class="form-group">
-              <select class="form-control form-control-lg" id="language_id" name ="language_id" type="text">
-                  <option value=0>No languages yet</option>
-              </select>
-              <button type="submit" class="btn btn-primary btn-lg mt-4 add_language">Add language </button>
-          <% end %>
+        <% else  %>
+          <div class="form-group">
+            <select class="form-control form-control-lg" id="language_id" name ="language_id" type="text">
+                <option value=0>No languages yet</option>
+            </select>
+            <a href="/users/<%= @user.id() %>/languages/new" type="button" role="button" class="btn btn-success btn-lg mt-4 add_language">Add language</a>
+        <% end %>
       </div>
-
-
-
-    <div id="add_language" >
-      <form action="/users/<%= @user.id() %>/languages/new" method="post">
-        <div class="row">
-          <div class="col-md-5 offset-md-2">
-            <div class="form-group">
-              <input class="form-control" type="text" name="name" placeholder="Add new language">
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="btn-group">
-              <button class="btn btn-secondary" type="submit">Add</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
 
     </div>
   </div>

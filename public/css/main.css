@@ -136,15 +136,12 @@ body {
 
 #user_sign_up,
 #user_sign_in,
-#language-menu {
+#language-menu,
+#add_language {
   vertical-align: middle;
   margin-top: 16rem;
 }
 
-#add_language {
-  display: none;
-  margin-top: 13rem;
-}
 .errors-msg ul{
   list-style: none;
   text-align: left;
@@ -159,8 +156,8 @@ body {
 
 /*Languages Page*/
 
-#language-menu h2 {
+#language-menu h2,
+#add_language h2 {
   font-size: 4rem;
   margin-bottom: 3rem;
 }
- 

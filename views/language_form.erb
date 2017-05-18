@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div class="row">
+    <div class="home-icon">
+    <a href="/"><img src="/img/logo.png" alt="logo" class="mt-5"/></a>
+    </div>
+    <div class="col-md-6 offset-md-3">
+      <div id="add_language" >
+        <h2>Select Language</h2>
+        <form action="/users/<%= @user.id() %>/languages/new" method="post">
+          <div class="form-group">
+            <input class="form-control form-control-lg" type="text" name="name" placeholder="Add new language">
+          </div>
+
+            <button class="btn btn-success btn-lg mt-2" type="submit">Add</button>
+            <a href="/users/<%= @user.id() %>/languages" role="button" class="btn btn-primary btn-lg mt-2 ml-2 add_language">Go Back</a>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
