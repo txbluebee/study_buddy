@@ -39,19 +39,16 @@
     <% @flashcards.each() do |flashcard| %>
       <!-- <div class="col-xs-6 col-md-4" id="flashcard_design"> -->
         <div class="col-md-6 col-sm stage_preview">
-          <div id = "<%= flashcard.id() %>" class="flashcard_preview">
+          <div id = "<%= flashcard.id() %>">
             <div class="front_preview">
               <p class="limit"><%= flashcard.question() %></p>
-            </div>
-            <div class="back_preview">
-              <p class="limit"><%= flashcard.answer() %></p>
-            </div>
-            <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/<%= flashcard.id() %>/delete" method="post">
-              <input name="_method" type="hidden" value="delete">
-              <input type="image" class="delete_button" src="/img/delete_w.svg" type="submit">
-            </form>
-          </div>
 
+              <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/tags/<%= @tag.id()%>/flashcards/<%= flashcard.id() %>/delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <input type="image" class="delete_button" src="/img/delete_b.svg" type="submit">
+              </form>
+            </div>
+          </div>
         </div>
         <% end %>
       </div>
