@@ -5,6 +5,7 @@ body {
 
 #cover {
   height: 20rem;
+  background-color: #777;
   background: url('../img/dashboard1.jpg') center center no-repeat;
   background-size: cover;
   min-width: 100%;
@@ -38,10 +39,11 @@ body {
   display: block;
   margin: auto;
   margin-top: 25%;
+
 }
 
 #pink {
-  background-color: #ff7769;
+  background-color: #FF6666;
 }
 
 #blue {
@@ -49,7 +51,7 @@ body {
 }
 
 #yellow {
-  background-color: #ffc05c;
+  background-color: #f9c80e;
 }
 
 #green {
@@ -67,55 +69,23 @@ body {
 
 }
 
-/***********/
-/**Projects*****/
-/***********/
 
-.project-cover {
-  background-color: #5bc0eb;
-}
-
-.tip-cover {
-  background-color: #9fd356;
-}
 
 /***********/
 /**Tips*****/
 /***********/
-
-
-.link-new-tip {
-  display: inline-block;
-  margin: 2rem 0;
-}
-
-.tip_card {
-  border: 3px solid white;
-  margin-bottom: 2rem;
-}
-
-.delete_btn {
-  background-color: #9fd356;
-  color: white;
-  border: none;
-  right: 0.5rem;
-}
-
-#delete-btn {
-  background-color: #9fd356;
-  color: white;
-}
-
 .tip_header {
   background-color: #9fd356;
   padding-left: 2rem;
-  font-weight: bolder;
   border-bottom: 3px solid white;
+}
+.tip_card {
+  border: 3px solid white;
+
 }
 
 .tip_description {
   background-color: #333;
-  padding-left: 2rem;
 }
 
 /*Project CSS styles*/

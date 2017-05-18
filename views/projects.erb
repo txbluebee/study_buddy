@@ -23,12 +23,11 @@
               <p>Description: <%= project.description%></p>
               <a href="<%=project.github%>"><p >Github Link</p></a>
 
-              <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/<delete" method="post">
-                <input name="_method" type="hidden" value="delete">
-                <input type="image" class="delete_button" src="/img/delete_b.svg" type="submit">
-              </form>
-
-
+              <div id="delete-btn" class = "text-right">
+                <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/<%= project.id() %>/delete" method="post">
+                  <input name="_method" type="hidden" value="delete">
+                  <button class = "delete_btn mt-1" type="submit"><i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i></button>
+                </form>
           </div>
         </div>
       <% end %>

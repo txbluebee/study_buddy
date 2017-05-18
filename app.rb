@@ -232,7 +232,7 @@ post('/users/:user_id/languages/:language_id/projects/new') do
 end
 
 #Tips
-get('/users/:user_id/languages/:language_id/resources/new') do
+get('/users/:user_id/languages/:language_id/tips/new') do
   @user = User.find(params.fetch("user_id").to_i())
   @language = Language.find(params.fetch("language_id").to_i())
   erb(:tip_form)
@@ -293,9 +293,10 @@ delete('/users/:user_id/languages/:language_id/resources/:resource_id/delete') d
 end
 
 #Delete Projects##
-delete('/users/:user_id/languages/:language_id/projects/new') do
-  @user = User.find(params.fetch("id").to_i())
-  @language = Language.find(params.fetch("id").to_i())
-  @project = Project.find(params.fetch("id").to_i())
-  erb(:projects)
+delete('/users/:user_id/languages/:language_id/projects/:project_id/delete') do
+  @user = User.find(params.fetch("user_id").to_i())
+  @language = Language.find(params.fetch("language_id").to_i())
+  @project = Project.find(params.fetch("project_id").to_i())
+  @project.delete()
+  redirect('/users/'.concat((@user.id).to_s) + '/languages/'.concat((@language.id).to_s)+'/projects')
 end
