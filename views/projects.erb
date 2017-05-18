@@ -13,7 +13,7 @@
 <div class="container" id="background">
 <br>
 <br>
-  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new"><h3>Add project</h3></a>
+  <a href="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/new"><h3>Add Project</h3></a>
     <% if @projects.any?() %>
       <% @projects.each() do |project| %>
         <div class="card project_card">
@@ -21,7 +21,7 @@
             <div class="card-blockquote">
               <p>Date: <%= project.date%></p>
               <p>Description: <%= project.description%></p>
-              <a href="<%=project.github%>"><p >Github Link</p></a>
+              <a href="<%=project.github%>"><p >Github Repository Link</p></a>
 
               <div id="delete-btn" class = "text-right">
                 <form action="/users/<%= @user.id() %>/languages/<%= @language.id() %>/projects/<%= project.id() %>/delete" method="post">
