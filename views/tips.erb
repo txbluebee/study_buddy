@@ -1,12 +1,10 @@
 <!-- Dashboard Header -->
-  <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>" id="header_link">
-    <section id="cover">
-      <div id="cover-caption">
-      <h1 class="display-3"><%=@language.name() %></h1>
-        <p class="lead display-5"><%= @user.name() %></p>
-      </div>
-    </section>
-  </a>
+<section id="cover" class="tip-cover">
+  <div id="cover-caption">
+    <a href="/users/<%= @user.id() %>/languages/<%= @language.id()%>"><h1 class="display-3">Tips</h1></a>
+    <p><%=@language.name() %></p>
+  </div>
+</section>
 
 <div class="container">
   <div class="row">

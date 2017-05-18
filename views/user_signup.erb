@@ -1,8 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="home-icon">
-    <a href="/"><img src="/img/logo.png" alt="logo" class="mt-5"/></a>
-    </div>
     <div class="col-md-4 offset-md-4">
       <div id="user_sign_up">
         <form action="/users/new" class="form-signin" method="post">
@@ -21,18 +18,23 @@
         <p>Already a member?<p>
           <a href="/user/login" class="signin-link"><p>Sign in</p></a>
       </div>
-    </div>
-  </div>
-
-  <!-- Error Messages -->
-  <div class="errors-msg">
-      <% if (@errors != nil ) && (@errors.errors().any?()) %>
-        <ul>
-        <% @errors.errors().full_messages().each() do |message| %>
-          <li><p><%= message %></p></li>
+      <!-- Error Messages -->
+      <div class="errors-msg">
+        <% if (@errors != nil ) && (@errors.errors().any?()) %>
+          <ul>
+          <% @errors.errors().full_messages().each() do |message| %>
+            <li><p><%= message %></p></li>
+          <% end %>
+          </ul>
         <% end %>
-        </ul>
-      <% end %>
+      </div>
+      <!-- Home Icon -->
+      <div class="home-icon">
+      <a href="/"><i class="fa fa-home fa-3x mt-4" aria-hidden="true"></i></a>
+      </div>
+    </div>
 
   </div>
+
+
 </div>

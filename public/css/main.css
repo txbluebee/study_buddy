@@ -142,10 +142,18 @@ body {
   margin-top: 16rem;
 }
 
+.errors-msg {
+  position: absolute;
+  color: yellow;
+}
+
+.home-icon {
+  margin-top: 6rem;
+}
+
 .errors-msg ul{
   list-style: none;
   text-align: left;
-  left: 22rem;
 }
 
 /*Dashboard*/

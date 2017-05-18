@@ -5,8 +5,8 @@ body {
 
 #cover {
   height: 20rem;
-  background-color: #777;
-  background: url('../img/dashboard1.jpg') center center no-repeat;
+  /*background: url('../img/dashboard1.jpg') center center no-repeat;*/
+  border: 10px double white;
   background-size: cover;
   min-width: 100%;
   display: flex;
@@ -37,7 +37,6 @@ body {
   font-family: 'Trebuchet MS', sans-serif;
   margin: 30px;
   text-align: center;
-
 }
 
 #pink {
@@ -65,7 +64,17 @@ body {
   text-align: center;
 }
 
+/***********/
+/**Projects*****/
+/***********/
 
+.project-cover {
+  background-color: #5bc0eb;
+}
+
+.tip-cover {
+  background-color: #9fd356;
+}
 
 /***********/
 /**Tips*****/
