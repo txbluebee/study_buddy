@@ -1,6 +1,6 @@
 require("bundler/setup")
 Bundler.require(:default)
-require("pry")
+
 
 ENV['RACK_ENV'] = 'test'
 
